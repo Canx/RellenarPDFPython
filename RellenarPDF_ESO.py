@@ -87,16 +87,19 @@ camposCheckBox=["untitled6","untitled21","untitled22","untitled23","untitled24",
 #Algunos de estos datos se modifican dinamicamente bebiendo de fuentes CSV
 data_dict = {
    'untitled1': 'CODIGO_CENTRO', #Codigo de centro
-   'untitled5': 'NOMBRE_CENTRO', #Nombre del centro
-   'untitled6': 'TITULARIDAD', #Centro titularidad publica
    'untitled2': 'LOC_CENTRO', #Localidad centro
-   'untitled4': 'PROV_CENTRO', #Provincia centro
-   'untitled8': 'TEL_CENTRO', #Telefono Centro
    'untitled3': 'DIR_CENTRO', #Direccion Centro
-   'untitled9': 'CODIGO_POSTAL', #Codigo Postal Centro
+   'untitled4': 'PROV_CENTRO', #Provincia centro
+   'untitled5': 'NOMBRE_CENTRO', #Nombre del centro
+   'untitled6': 'TEL_CENTRO', #Centro titularidad publica
+   'untitled7': 'CP_CENTRO', #Centro titularidad publica
+   'untitled8': '8??????', #Telefono Centro
+   'untitled9': 'CURSO', #Codigo Postal Centro
+   'untitled10': '10????', #Codigo Postal Centro
+   'untitled11': '11??????', #Curso Alumno
    'untitled12': 'NIA', #NIA Alumno
-   'untitled11': 'CURSO', #Curso Alumno
-   'untitled13': 'NOMBRE_ALUMNO' #Apellidos, Nombre - Alumnos
+   'untitled13': '13??????', #Apellidos, Nombre - Alumnos
+   'untitled14': 'NOMBRE_ALUMNO' #Apellidos, Nombre - Alumnos
    #'untitled15': 'Nombre ciclo formativo', #Titulo ciclo
    #'untitled16': 'Superior', #Grado ciclo
    #'untitled18': 'Punto 1.1', #Punto 1.1
@@ -121,9 +124,9 @@ print("Comenzamos a procesar los PDFs")
 
 # Modificar data_dict con valores de centro.csv
 with open(DATOS_CENTRO, newline='\n') as csvfile:
-    reader = csv.reader(csvfile, delimiter=',', quotechar='"')
+    reader_centro = csv.reader(csvfile, delimiter=',', quotechar='"')
     
-    for fila in reader:
+    for fila in reader_centro:
         for etiqueta, contenido in data_dict.items():
             if contenido==fila[0]:
                 data_dict[etiqueta]=fila[1]
@@ -131,9 +134,9 @@ with open(DATOS_CENTRO, newline='\n') as csvfile:
 #Abrimos el fichero CSV
 with open(LISTADO_ALUMNOS, newline='\n') as csvfile:
     #Con el fichero abierto, configuramos el lector CSV 
-    reader = csv.reader(csvfile, delimiter=',', quotechar='"')
+    reader_alumno = csv.reader(csvfile, delimiter=',', quotechar='"')
     #Para cada linea (una linea por alumno)
-    for alumno in reader:
+    for alumno in reader_alumno:
         #Modificamos el data_dic dinamicamente con los valores leidos del CSV
 
         for etiqueta, contenido in data_dict.items():
